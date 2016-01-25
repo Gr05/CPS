@@ -14,7 +14,20 @@ int calcul_terme (int n){
 	return u;
 }
 
+/*Question 2*/
+
+int afficher_terme (){
+	int n = 0;
+	printf("Saisissez des entier positif, entrez -1 pour quitter\n");
+	while ( n != -1){
+		scanf("%d", &n);
+		if (n != -1) {
+			printf("u%d = %d\n", n, calcul_terme(n));
+		}
+	}
+}
+
 int main(){
-	printf("u0 = %u\n", calcul_terme(0));
+	afficher_terme();
 	return 0;
 }
