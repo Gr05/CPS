@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-/* Exercice 1 */
+/*--------------------- Exercice 1 ----------------------*/
 
 /* Question 1 */ 
 
@@ -14,7 +14,7 @@ int calcul_terme (int n){
 	return u;
 }
 
-/*Question 2*/
+/* Question 2 */
 
 int afficher_terme (){
 	int n = 0;
@@ -27,7 +27,17 @@ int afficher_terme (){
 	}
 }
 
-/* Exercice 2 */
+/* Question 3 */
+
+void calcul_terme_choix(){
+	int u;
+	int n;
+	printf("Veuillez choisir le parametre u0 puis le parametre n\n");
+	scanf("%d %d", &u, &n);
+	printf("u%d=%d\n", n, calcul_terme_general(u, n));
+}
+
+/*--------------------- Exercice 2 ----------------------*/
 
 /* Question 1*/
 /*Mon ordinateur peut calculer les factorielles jusqu'à 13 (type : int)*/
@@ -52,11 +62,8 @@ void exo2 ()
 	printf("La factorielle est : %d\n", res);
 }
 
-
-
-
-
 int main(){
-	afficher_terme();
+	calcul_terme_choix();
 	return 0;
 }
+
