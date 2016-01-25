@@ -43,7 +43,7 @@ void calcul_terme_choix(){
 /*--------------------- Exercice 2 ----------------------*/
 
 /* Question 1*/
-/*Mon ordinateur peut calculer les factorielles jusqu'à 13 (type : int)*/
+/*Mon ordinateur peut calculer les factorielles jusqu'à 12 (type : int) et fact 13 > 2^31*/
 
 /* Question 2 */
 int factoriel (int n)
@@ -58,12 +58,34 @@ int factoriel (int n)
 
 void exo2 ()
 {
-	int fact, res;
+	int n;
 	printf("Saisir le nombre\n");
-	scanf("%d", &fact);
-	res = factoriel(fact);
-	printf("La factorielle est : %d\n", res);
+	scanf("%d", &n);
+	printf("La factorielle est : %d\n", factoriel(n));
 }
+
+
+/*--------------------- Exercice 3 ----------------------*/
+
+int compte (int x)
+{
+	int i;
+	for(i=1; i<=4; i++)
+		x = x * i;
+	return x;
+}
+
+void exo3 ()
+{
+	int k;
+	printf("Saisir la valeur pour le calcul : \n");
+	scanf("%d", &k);
+	printf("La fonction renvoie %d et k vaut maintenant %d\n", compte(k), k);
+}
+
+/*C'est affiché k fois la factorielle de 4 et on voit que k n'est pas modifié
+contrairement a ce que l'on pourrai penser qu'il est modifié pour la ligne x = x * i*/
+
 
 int main(){
 	calcul_terme_choix();
