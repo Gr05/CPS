@@ -27,6 +27,35 @@ int afficher_terme (){
 	}
 }
 
+/* Exercice 2 */
+
+/* Question 1*/
+/*Mon ordinateur peut calculer les factorielles jusqu'à 13 (type : int)*/
+
+/* Question 2 */
+int factoriel (int n)
+{
+	
+	if(n == 1 || n == 0)
+	{
+		return 1;
+	}
+	return n * factoriel (n - 1);
+}
+
+void exo2 ()
+{
+	int fact, res;
+	printf("Saisir le nombre\n");
+	scanf("%d", &fact);
+	res = factoriel(fact);
+	printf("La factorielle est : %d\n", res);
+}
+
+
+
+
+
 int main(){
 	afficher_terme();
 	return 0;
