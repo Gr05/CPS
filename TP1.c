@@ -4,8 +4,8 @@
 
 /* Question 1 */ 
 
-int calcul_terme (int n){
-	int u = 1;
+int calcul_terme_general (int u0, int n){
+	int u = u0;
 	int i = 1;
 	while (i<=n){
 		u = 3*u + 2;
@@ -13,10 +13,13 @@ int calcul_terme (int n){
 	}
 	return u;
 }
+int calcul_terme ( int n ){
+	return calcul_terme_general(1, n);
+}
 
 /* Question 2 */
 
-int afficher_terme (){
+void afficher_terme (){
 	int n = 0;
 	printf("Saisissez des entier positif, entrez -1 pour quitter\n");
 	while ( n != -1){
