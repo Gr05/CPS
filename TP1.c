@@ -87,8 +87,34 @@ void exo3 ()
 contrairement a ce que l'on pourrai penser qu'il est modifié pour la ligne x = x * i*/
 
 
+
+/*--------------------- Exercice 4 ----------------------*/
+
+void un_switch (char c){
+	switch(c){
+		case '@': case '.': printf("caractere qui peux ce trouver dans une adresse mail\n");
+		break;
+		case '/': printf("Caractere qui peutse trouver dans une adresse http\n");
+		break;
+		case '<': case '>': case '=': printf("Caractere de comparaison\n");
+		break;
+		default: 
+		if ( c>= 'A' && c <= 'Z'){
+			printf("Lettre majuscule\n");
+		} else if( c>='0' && c<='9'){
+			printf("Chiffres\n");
+		} else {
+			printf("Autre caractere\n");
+		};
+		break;
+	}
+}
 int main(){
-	calcul_terme_choix();
+	int i;
+	for (i = 0; i<= 255; i++){
+		printf("%c ", i);
+		un_switch(i);
+	}
 	return 0;
 }
 
