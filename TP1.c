@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 /*--------------------- Exercice 1 ----------------------*/
 
@@ -109,6 +110,55 @@ void un_switch (char c){
 		break;
 	}
 }
+
+
+/*--------------------- Exercice 4 ----------------------*/
+
+void exo5 ()
+{
+	int x, y, z;
+	printf("Saisir x \n");
+	scanf("%d", &x);
+	printf("Saisir y \n");
+	scanf("%d", &y);
+
+	if(y==0)
+	{
+		fprintf(stderr,"Division par 0 impossible\n");
+		exit(0);
+	}
+	else
+	{
+		printf("On va diviser x par y ... ");
+		z = x / y;
+		printf("Le resultat est : %d\n", z);
+	}
+}
+
+/* Question 1 */
+/*On s'attend à ce que lorsque l'on affect y à 0 ça affiche "Division par 0 impossible",
+et pour tout autre valeur de y on est le resultat casté en int de la divison.*/
+
+/* Question 2 */
+/*A l'exécution on voit que pour toute valeur de y on a le message d'erreur
+ "Exception en point flottant", en faisant le if (y=0) on réalise une affection
+ et pas une comparaison, une affectation doit renvoyer une autre valeur que 1
+ et on passe dans le else et on fait la division avec y qui vaut 0. Donc il faut écrire "=="*/
+
+ /* Question 3 */
+
+ /* Question 4 */
+
+
+
+
+
+
+
+
+
+/*--------------------- Exercice 4 ----------------------*/
+
 int main(){
 	int i;
 	for (i = 0; i<= 255; i++){
