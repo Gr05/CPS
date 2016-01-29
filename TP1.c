@@ -112,7 +112,7 @@ void un_switch (char c){
 }
 
 
-/*--------------------- Exercice 4 ----------------------*/
+/*--------------------- Exercice 5 ----------------------*/
 
 void exo5 ()
 {
@@ -157,7 +157,7 @@ et pour tout autre valeur de y on est le resultat casté en int de la divison.*/
 
 
 
-/*--------------------- Exercice 4 ----------------------*/
+/*--------------------- Exercice 6 ----------------------*/
 
 int main(){
 	int i;
