@@ -124,14 +124,17 @@ void exo5 ()
 
 	if(y==0)
 	{
-		fprintf(stderr,"Division par 0 impossible\n");
-		exit(0);
+		/*fprintf(stderr,"Division par 0 impossible\n");
+		//return 1;*/
+		exit(1);
 	}
 	else
 	{
 		printf("On va diviser x par y ... ");
 		z = x / y;
 		printf("Le resultat est : %d\n", z);
+		//return 0;
+		exit(0);
 	}
 }
 
@@ -146,25 +149,83 @@ et pour tout autre valeur de y on est le resultat casté en int de la divison.*/
  et on passe dans le else et on fait la division avec y qui vaut 0. Donc il faut écrire "=="*/
 
  /* Question 3 */
+ /*Dans le cas ou y est égal a 0 on voit apparaitre le message d'erreur Division par 0 impossible
+   et lorsque y est différent de 0 nous avons bien "On va diviser x par y ... Lesrésultat : !(&z)"
+   l'alternative a ce coode est d'utiliser exit au lieu de return.*/
 
  /* Question 4 */
-
-
-
-
-
-
-
+ /*On récèpe le code de sortie du 1er programme que l'on exécute pour voir quelle action
+   on fait a la suite ./TP1 || ./TP1_b*/
 
 
 /*--------------------- Exercice 6 ----------------------*/
 
-int main(){
-	int i;
-	for (i = 0; i<= 255; i++){
-		printf("%c ", i);
-		un_switch(i);
+void exo6 (){
+	int x, y, z, i, j, k;
+	printf("Saisir x \n");
+	scanf("%d", &x);
+	printf("Saisir y \n");
+	scanf("%d", &y);
+	i = x;
+	j = y;
+
+	if(y==0)
+	{
+		fprintf(stderr,"Division par 0 impossible\n");
+		//return 1;
+		exit(1);
 	}
-	return 0;
+	else
+	{
+		printf("On va diviser x par y ... \n");
+		z = ++x / y;
+		printf("Pour ++x : On a x = %d, et z = %d\n", x, z);
+		k = i++ / j;
+		printf("Pour x++ : On a i = %d, et k = %d\n", i, k);
+		//return 0;
+		exit(0);
+	}
 }
 
+/* Question 1 */
+/*On voit que la variable x est incrémenté avant le calcul mais i est incrémenté apres
+  le calcul*/
+
+
+/*--------------------- Exercice 7 ----------------------*/
+
+int main (){
+	int x, y, z;
+	y = 0;
+	printf("Saisir x\n");
+	scanf("%d", &x);
+	printf("On va le diviser par y ...");
+	printf("Affiche\nNonAffiche");
+	z = x / y;
+	printf("Le resultat est : %d\n", z);
+	exit (0);
+}
+
+/* Question 1 */
+/* On devrai avoir ecrit Saisir x, puis "On va le diviser par y ... " une erreur de type "Exception en point flottant"*/
+
+/* Question 2 */
+/* L erreur est affichee tout de suite apres la saisie de x, car le buffer correspondant a printf
+  n etait pas plein donc il ne l a pas affiche a l ecran, le mode par defaut est line buffered. */
+
+/* Question 3 */
+/* Pour pouvoir afficher ce qu'il aurai du être affiché il faut placer un retour a la ligne, pour le buffer stdout soit envoyé
+   en ecriture, ou bien on aurai pu changer le mode lors de l'appel de notre exec et le mettre en unbuffered (_IONBF)*/
+
+
+
+
+
+/*--------------------- Test des progs ----------------------*/
+
+/*int main(){
+	
+	exo7();
+	return 0;
+}
+*/
