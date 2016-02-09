@@ -84,7 +84,7 @@ void exo3 ()
 	printf("La fonction renvoie %d et k vaut maintenant %d\n", compte(k), k);
 }
 
-/*C'est affiché k fois la factorielle de 4 et on voit que k n'est pas modifié
+/*C est affiche k fois la factorielle de 4 et on voit que k n'est pas modifie
 contrairement a ce que l'on pourrai penser qu'il est modifié pour la ligne x = x * i*/
 
 
@@ -93,28 +93,33 @@ contrairement a ce que l'on pourrai penser qu'il est modifié pour la ligne x = 
 
 void un_switch (char c){
 	switch(c){
-		case '@': case '.': printf("caractere qui peux ce trouver dans une adresse mail\n");
+		case '@':
+		case '.': 
+			printf("caractere qui peux ce trouver dans une adresse mail\n");
 		break;
-		case '/': printf("Caractere qui peutse trouver dans une adresse http\n");
+		case '/':
+			printf("Caractere qui peutse trouver dans une adresse http\n");
 		break;
-		case '<': case '>': case '=': printf("Caractere de comparaison\n");
+		case '<':
+		case '>':
+		case '=':
+			printf("Caractere de comparaison\n");
 		break;
 		default: 
-		if ( c>= 'A' && c <= 'Z'){
-			printf("Lettre majuscule\n");
-		} else if( c>='0' && c<='9'){
-			printf("Chiffres\n");
-		} else {
-			printf("Autre caractere\n");
-		};
-		break;
+			if ( c>= 'A' && c <= 'Z'){
+				printf("Lettre majuscule\n");
+			} else if( c>='0' && c<='9'){
+				printf("Chiffres\n");
+			} else {
+				printf("Autre caractere\n");
+			};
 	}
 }
 
 
 /*--------------------- Exercice 5 ----------------------*/
 
-void exo5 ()
+int main ()
 {
 	int x, y, z;
 	printf("Saisir x \n");
@@ -126,7 +131,7 @@ void exo5 ()
 	{
 		/*fprintf(stderr,"Division par 0 impossible\n");
 		//return 1;*/
-		exit(1);
+		return(1);
 	}
 	else
 	{
@@ -134,13 +139,14 @@ void exo5 ()
 		z = x / y;
 		printf("Le resultat est : %d\n", z);
 		//return 0;
-		exit(0);
+		return(0);
 	}
 }
 
 /* Question 1 */
 /*On s'attend à ce que lorsque l'on affect y à 0 ça affiche "Division par 0 impossible",
-et pour tout autre valeur de y on est le resultat casté en int de la divison.*/
+et pour tout autre valeur de y on est le resultat casté en int de la divison. C'est pas faux
+car le compilateru attend une expression ici, et c'est bien une expression.*/
 
 /* Question 2 */
 /*A l'exécution on voit que pour toute valeur de y on a le message d'erreur
@@ -155,7 +161,9 @@ et pour tout autre valeur de y on est le resultat casté en int de la divison.*/
 
  /* Question 4 */
  /*On récèpe le code de sortie du 1er programme que l'on exécute pour voir quelle action
-   on fait a la suite ./TP1 || ./TP1_b*/
+   on fait a la suite ./TP1 || ./TP1_b
+   Rediriger la sortie standard sous la condition que ca c'est bien passé : 
+   ./TP1 > res.txt && mv res.txt Resultats */
 
 
 /*--------------------- Exercice 6 ----------------------*/
@@ -188,19 +196,19 @@ void exo6 (){
 }
 
 /* Question 1 */
-/*On voit que la variable x est incrémenté avant le calcul mais i est incrémenté apres
-  le calcul*/
+/*Lorsque l'  d'incrementation ++ est place avant la variable alors il est incremente apres le calcul donc le resultat de z depend de "l ancienne valeur" de x,
+  et lorsqu il est place apres la variable il est incremente avant le calcul donc z depend de la "nouvelle valeur" de z*/
 
 
 /*--------------------- Exercice 7 ----------------------*/
 
-int main (){
+int exo7 (){
 	int x, y, z;
 	y = 0;
 	printf("Saisir x\n");
 	scanf("%d", &x);
 	printf("On va le diviser par y ...");
-	printf("Affiche\nNonAffiche");
+	//printf("Affiche\nNonAffiche");
 	z = x / y;
 	printf("Le resultat est : %d\n", z);
 	exit (0);
@@ -214,8 +222,12 @@ int main (){
   n etait pas plein donc il ne l a pas affiche a l ecran, le mode par defaut est line buffered. */
 
 /* Question 3 */
-/* Pour pouvoir afficher ce qu'il aurai du être affiché il faut placer un retour a la ligne, pour le buffer stdout soit envoyé
-   en ecriture, ou bien on aurai pu changer le mode lors de l'appel de notre exec et le mettre en unbuffered (_IONBF)*/
+/*      1-Pour pouvoir afficher ce qu'il aurai du être affiché il faut placer un retour a la ligne pour que le buffer stdout soit envoyé
+   en ecriture
+        2-On aurai pu changer le mode lors de l'appel de notre exec et le mettre en unbuffered (_IONBF) setbuf(stdout, NULL);
+        3-Pareil que 2 mais on écrit setvbuf (stdout, NULL, _IONBF, BUFSIZ); //un peu plus riche que la précédente !!
+        4-Écrire fprintf(stderr, "on va .......");
+*/
 
 
 
@@ -227,5 +239,4 @@ int main (){
 	
 	exo7();
 	return 0;
-}
-*/
+}*/
