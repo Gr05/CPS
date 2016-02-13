@@ -116,3 +116,31 @@ int main_exo2 ()
 
 /*--------------------- Exercice 3 ----------------------*/
 
+//Question 1 
+//&t[1] = t+1 -> *(t+1)
+//&t[2] = t+2 -> *(t+2)
+
+//Question 2
+// int *p = t; *p == t[0]
+// p = &x;      *p == x
+// *p = 371;   x == 371
+// t = p;      invalid
+// p = &y;     *p == y
+
+// Question 3 
+
+int main (){
+	int t[7];
+	int x = 5;
+	int y = 36;
+
+	printf("t : %p\nt + 1 : %p\n&t[1] : %p\nt + 2 : %p\n&t[2] : %p\n*(t+1) : %d\n*(t+2) : %d\n", t, t+1, &t[1], t+2, &t[2], *(t+1), *(t+2));
+
+	int *p = t; printf("*p = %d, t[0] = %d\n", *p, t[0]);
+	p = &x; printf("*p = %d, x = %d\n", *p, x);
+	*p = 371; printf("x = %d\n", x);
+	//t = p; erreur a la compilation 
+	
+
+}
+
