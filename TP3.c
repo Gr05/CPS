@@ -92,3 +92,27 @@ int main_q4 (){
 
 
 /*--------------------- Exercice 2 ----------------------*/
+void fact (int x, int *f) //le fonction attend un int et un pointeur sur int en paramètres
+{
+	int i;
+	*f = 1;
+	for(i=1; i<=x; i++)
+	{
+		*f = *f * i; //on utilise la valeur pointée par le pointeur pour faire les calculs
+	}
+}
+
+int main_exo2 ()
+{
+	int x, res; //on déclare 2 int 
+
+	printf("Saisir la valeur pour le calcul de factorielle : \n");
+	scanf("%d", &x);
+	fact(x, &res); //on passe bien un int et l'adresse d'un int (pointeur sur int) en paramètres
+	printf ("Factorielle (%d) est %d\n", x, res); //on utilise la var res normalement
+	return 0;
+}
+
+
+/*--------------------- Exercice 3 ----------------------*/
+
