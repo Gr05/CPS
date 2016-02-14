@@ -144,3 +144,47 @@ int main (){
 
 }
 
+
+/*--------------------- Exercice 4 ----------------------*/
+
+void g()
+{
+	int n; //si on change de type ce n'est plus vrai
+	n = 22;
+}
+
+void f()
+{
+	int compteur;
+	compteur ++;
+	printf("f --> %d\n", compteur);
+}
+
+void daffile (int * p)
+{
+	int * psuiv;
+	psuiv = p + 1; //on avance d'une taille de int dans la pile
+	*psuiv = *psuiv + 1;
+	printf("La valeur qui suit l'adresse de (%p) est : %d\n", p, *psuiv);
+}
+
+int main ()
+{
+	int x,y; //avec ces 2 lignes on voit bien que ce processus a une pile independante
+	y = 10;  //et que les variables sont adressees dans l'ordre d'apparition dans le prgm
+	f();
+	g();
+	f();
+	daffile(&x);
+}
+
+/*
+Explication : on voit que l'on a pas des valeurs aléatoires à l'exécution. Lors du 1er appel
+de f() la variable compteur vaut 1 et pour le 2nd appel cette variable vaut 23.
+-Pour le 1er appel on suppose que c'est l'effet du compilateur qui met à 0 toute les variables non initialise.
+-Et pour le second appel on l'explique par l'utilisation de la pile propre a chaque programme,
+donc lorsque g() est appelé l'adresse de sa variable n est a la meme adresse que compteur qui
+on a "n = 22" puis lorsque f() est appelé comme compteur n'est pas initialise la variable a donc
+la même valeur que ce qu'il y avait avant.
+Il faut donc que les adresse pointent sur la même case (position + type).
+*/
