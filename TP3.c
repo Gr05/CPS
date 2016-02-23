@@ -2,6 +2,12 @@
 #include <stdlib.h>
 #include <math.h>
 
+/*Pour exercice 5*/
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <time.h>
+
+
 /*--------------------- Exercice 1 ----------------------*/
 
 //Question 1
@@ -188,3 +194,64 @@ on a "n = 22" puis lorsque f() est appelé comme compteur n'est pas initialise l
 la même valeur que ce qu'il y avait avant.
 Il faut donc que les adresse pointent sur la même case (position + type).
 */
+
+/*--------------------- Exercice 5 ----------------------*/
+
+ main(int argc, char *argv[])
+ {
+    char read, write, exec;
+    struct stat sb;
+
+    if (argc != 2) {
+       printf("Il n'y a pas le bon nombre d'arguments\n");
+       exit(EXIT_FAILURE);
+    }
+
+    if (stat(argv[1], &sb) == -1) {
+       perror("stat");
+       exit(EXIT_SUCCESS);
+    }
+
+    printf("Type de fichier :                ");
+    switch (sb.st_mode & S_IFMT) {
+    case S_IFBLK:  printf("périphérique bloc\n");       break;
+    case S_IFCHR:  printf("périphérique caractère\n");  break;
+    case S_IFDIR:  printf("répertoire\n");              break;
+    case S_IFIFO:  printf("FIFO/tube\n");               break;
+    case S_IFLNK:  printf("lien symbolique\n");         break;
+    case S_IFREG:  printf("fichier ordinaire\n");       break;
+    case S_IFSOCK: printf("socket\n");                  break;
+    default:       printf("inconnu ?\n");               break;
+    }
+
+    printf("Voici ses permissions :\n");
+
+    /*on cherche les permission de user*/
+    if (sb.st_mode & S_IRUSR) {read = 'r';}
+    else {read = '-';}
+    if (sb.st_mode & S_IWUSR) {write = 'w';}
+    else {write = '-';}
+    if (sb.st_mode & S_IXUSR) {exec = 'x';}
+    else {exec = '-';}
+    printf("User : %c%c%c\n", read, write, exec); //on affiche permission de user
+
+    /*group*/
+    if (sb.st_mode & S_IRGRP) {read = 'r';}
+    else {read = '-';}
+    if (sb.st_mode & S_IWGRP) {write = 'w';}
+    else {write = '-';}
+    if (sb.st_mode & S_IXGRP) {exec = 'x';}
+    else {exec = '-';}
+    printf("Group : %c%c%c\n", read, write, exec);
+
+    /*other*/    
+    if (sb.st_mode & S_IROTH) {read = 'r';}
+    else {read = '-';}
+    if (sb.st_mode & S_IWOTH) {write = 'w';}
+    else {write = '-';}
+    if (sb.st_mode & S_IXOTH) {exec = 'x';}
+    else {exec = '-';}
+    
+    printf("Other : %c%c%c\n", read, write, exec);
+
+ }
