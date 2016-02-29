@@ -1,3 +1,8 @@
+/**********TP3**********/
+/***Simon CHAMBONNET****/
+/*****Lucas GUERRY******/
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -135,7 +140,7 @@ int main_exo2 ()
 
 // Question 3 
 
-int main (){
+int mainExo3 (){
 	int t[7];
 	int x = 5;
 	int y = 36;
@@ -174,7 +179,7 @@ void daffile (int * p)
 	printf("La valeur qui suit l'adresse de (%p) est : %d\n", p, *psuiv);
 }
 
-int main ()
+int mainExo4 ()
 {
 	int x,y; //avec ces 2 lignes on voit bien que ce processus a une pile independante
 	y = 10;  //et que les variables sont adressees dans l'ordre d'apparition dans le prgm
@@ -197,24 +202,24 @@ Il faut donc que les adresse pointent sur la même case (position + type).
 
 /*--------------------- Exercice 5 ----------------------*/
 
- main(int argc, char *argv[])
- {
+ mainExo5 (int argc, char *argv[]) //en argument on passe le chemin du fichier
+ {								   //le fihier doit être dans le même repertoire sinon en mode su
     char read, write, exec;
-    struct stat sb;
+    struct stat sb; //on déclare sb (stat_buf)
 
     if (argc != 2) {
        printf("Il n'y a pas le bon nombre d'arguments\n");
        exit(EXIT_FAILURE);
     }
 
-    if (stat(argv[1], &sb) == -1) {
+    if (stat(argv[1], &sb) == -1) { //dans la variable sb on met l'état du fichier
        perror("stat");
        exit(EXIT_SUCCESS);
     }
 
-    printf("Type de fichier :                ");
-    switch (sb.st_mode & S_IFMT) {
-    case S_IFBLK:  printf("périphérique bloc\n");       break;
+    printf("Type de fichier :                "); 
+    switch (sb.st_mode & S_IFMT) {				//sur le champ st_mode on pose un mask qui correspond au type du fichier
+    case S_IFBLK:  printf("périphérique bloc\n");       break; //et on compare ce masque avec les types de fichier
     case S_IFCHR:  printf("périphérique caractère\n");  break;
     case S_IFDIR:  printf("répertoire\n");              break;
     case S_IFIFO:  printf("FIFO/tube\n");               break;
@@ -227,7 +232,7 @@ Il faut donc que les adresse pointent sur la même case (position + type).
     printf("Voici ses permissions :\n");
 
     /*on cherche les permission de user*/
-    if (sb.st_mode & S_IRUSR) {read = 'r';}
+    if (sb.st_mode & S_IRUSR) {read = 'r';} //on compare le champ st_mode avec read user
     else {read = '-';}
     if (sb.st_mode & S_IWUSR) {write = 'w';}
     else {write = '-';}
