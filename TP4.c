@@ -15,4 +15,13 @@
 
 /*--------------------- Exercice 1 ----------------------*/
 
-//Question 1
+/*Fonction my_strlen*/
+int my_strlen (char * chaine)
+{
+	int i = 0;
+	while (*chaine++)
+	{
+		i++;
+	}
+	return i;
+}
