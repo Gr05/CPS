@@ -25,3 +25,18 @@ int my_strlen (char * chaine)
 	}
 	return i;
 }
+
+/*Fonction my_strcat*/
+
+char * my_strcat(char * s1, char * s2){
+	char * res = (char *) malloc(my_strlen(s1) + my_strlen(s2) + 1);
+	char * current_char = res;
+	while(*s1){
+		*current_char++ = *s1++;
+	}
+	while(*s2){
+		*current_char++ = *s2++;
+	}
+	*current_char = 0;
+	return(res);
+}
