@@ -35,7 +35,7 @@ int recherche (int x, int *tabl, int taille)
 	return -1;
 }
 
-void init (int *tabl, int taille)
+/* void init (int *tabl, int taille)
 {
 	int i;
 
@@ -46,6 +46,11 @@ void init (int *tabl, int taille)
 		tabl[i] = (rand () % (BORNESUP - BORNEINF + 1) + BORNEINF);
 		i++;
 	}
+} */
+
+int * init (int taille){
+	int * tableau = malloc(taille * sizeof(int));
+	return tableau; 
 }
 
 int main ()
