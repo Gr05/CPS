@@ -48,7 +48,7 @@ void init (int *tabl, int taille)
 	}
 }
 
-int main ()
+//int main ()
 {
 	int tabint [N];
 	int cherche, res;
