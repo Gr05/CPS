@@ -1,10 +1,10 @@
-EXECS = simon lucas TP1
+EXECS = simon TP3
 
-all: $(EXECS)
+all: $(EXECS) clean
 
-TP1: TP1.o
-	gcc $< -o TP1
-TP1.o: TP1.c
+TP1: TP3.o
+	gcc $< -o TP3
+TP1.o: TP3.c
 	gcc -c $<
 simon: simon.o
 	gcc $< -o simon
