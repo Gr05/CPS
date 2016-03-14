@@ -40,3 +40,23 @@ char * my_strcat(char * s1, char * s2){
 	*current_char = 0;
 	return(res);
 }
+
+/*Fonction my_strstr*/
+char * appartient(char * s1, char * s2){
+	char * res = s1;
+	while (*s1 && *s2){
+		if(*s1 != *s2++){
+			*res = *s1++;
+		} else {
+
+		}
+	}
+}
+
+char * my_strstr (char * s1, char * s2){
+	if(*s2){
+		return s1;
+	} else {
+		return appartient(s1, s2);
+	}
+}
