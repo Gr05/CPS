@@ -53,7 +53,7 @@ int * init (int taille){
 	return tableau; 
 }
 
-//int main ()
+int main ()
 {
 	int tabint [N];
 	int cherche, res;
