@@ -1,13 +1,13 @@
-EXECS = crible
-SRCS = crible.c utils.c main.c
+EXECS = jeu
+SRCS = main.c
 OBJS = $(SRCS:.c=.o)
 CFLAGS = -Wall -I ../include
 CC = gcc
 
 all : $(EXECS) move
 
-crible : $(OBJS)
-	$(CC) -o crible $(OBJS)
+jeu : $(OBJS)
+	$(CC) -o jeu $(OBJS)
 
 move : 
 	mv $(EXECS) ../bin
