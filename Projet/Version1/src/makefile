@@ -1,5 +1,5 @@
 EXECS = jeu
-SRCS = main.c
+SRCS = main.c liste_navires.c maillon.c
 OBJS = $(SRCS:.c=.o)
 CFLAGS = -Wall -I ../include
 CC = gcc
