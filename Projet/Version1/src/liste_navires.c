@@ -2,6 +2,19 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+void afficher_liste(liste_navires * l){
+	if(l == NULL){
+		printf("La liste n'existe pas\n");
+	} else {
+		maillon * maillon_courant = l->tete;
+		while(maillon_courant != NULL){
+			afficher_maillon(maillon_courant);
+			maillon_courant = maillon_courant->suiv;
+		}
+	}
+		
+}
+
 liste_navires * liste_vide (){
 	liste_navires * l = malloc(sizeof(liste_navires));
 	l->tete = NULL;
