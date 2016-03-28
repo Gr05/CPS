@@ -4,7 +4,7 @@
 //#include "grille.h"
 
 
-typedef char** grille;
+typedef char ** grille;
 
 typedef struct _liste_navires {
 	maillon * tete;

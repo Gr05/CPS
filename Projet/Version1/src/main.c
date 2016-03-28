@@ -6,32 +6,30 @@
 int main (int argc, char * argv[]){
 	int i,j,a;
 	grille g;
-	g = malloc(sizeof(char*)*10);
-	for (i = 0; i < 10; i++){
-		g[i] = malloc(10);
+	int taille = 10;
+	FILE * fichier;
+	carac_navires tab_def_jeu[4]; //tableau ou sont associé les types au nombre
+
+	if (argc != 2)
+	{
+		printf("Il n'y a pas le bon nombre d'arguments\n");
+		exit(1);
 	}
-	for (i = 0; i < 10; i++){
-		for (j = 0; j < 10; j++){
-			g[i][j]='B';
-		}
-	}
+	
+	g = creer_grille(taille);
+	fichier = open_file(argv[1]);
 
-	g[0][0] = 'N';
-	g[0][1] = 'N';
-	g[0][2] = 'N';
+	init_grille (g, taille);
+	init_carac_navires (tab_def_jeu);
 
-	g[0][9] = 'N';
-	g[1][9] = 'N';
+	remplit_grille (g, taille, fichier, tab_def_jeu);
 
-	g[9][7] = 'N';
-	g[9][8] = 'N';
-	g[9][9] = 'N';
-
-
-	liste_navires * l = creer_liste_navires(g, 10);
+	liste_navires * l = creer_liste_navires(g, taille);
 
 	afficher_liste(l);
 
+
+	//mauvaise conv !!
 	g[0][9] = 'T';
 	g[1][9] = 'T';
 	
