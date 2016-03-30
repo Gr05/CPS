@@ -10,4 +10,6 @@ FILE* open_file (char * chemin);
 int lecture_fichier (FILE * fichier, int coordonnees[]);
 
 //close file
-void close_fichier (FILE * fichier);
+void close_file (FILE * fichier);
+
+#endif

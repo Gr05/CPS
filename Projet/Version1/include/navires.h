@@ -27,3 +27,4 @@ int navire_appartient (int type, carac_navires tab[]);
 
 //vérifie que tous les navires ont été utilisé
 int navire_pioche (carac_navires tab[]);
+#endif
