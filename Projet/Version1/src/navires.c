@@ -36,16 +36,15 @@ int navire_appartient (int type, carac_navires tab[])
 		{
 			if(tab[i].type_navire == type) //le type correspond ?
 			{
-				if (tab[i].nb_navires == 0) //il y en a pas trop ?
+				if (tab[i].nb_navires > 0) //il y en a pas trop ?
 				{
-					printf("Navires.navire_pioche : Il y a trop de navire à %d cases. \n", tab[i].type_navire);
-					return 0;
-					
+					tab[i].nb_navires = tab[i].nb_navires - 1;
+					return 1;
 				}
 				else
 				{
-					tab[i].nb_navires = tab[i].nb_navires - 1;
-					return 1;					
+					printf("Navires.navire_pioche : Il y a trop de navire à %d cases. \n", tab[i].type_navire);
+					return 0;
 				}
 			}
 			i++;
@@ -54,7 +53,6 @@ int navire_appartient (int type, carac_navires tab[])
 		if (i == 4) //le type ne correspond pas
 		{
 			printf("Navires.navire_pioche : Le navire à %d cases n'existe pas.\n", type);
-			return 1;
 		}
 		return 0;
 }
@@ -63,16 +61,14 @@ int navire_appartient (int type, carac_navires tab[])
 int navire_pioche (carac_navires tab[])
 {
 	int i = 0;
-	int retour = 0;
 	while (i<4)
 	{
 		if (tab[i].nb_navires != 0)
 		{
-			retour = 1;
 			printf("Navires.navire_pioche : Tous les navires ne sont pas placé.\n");
 			printf("Il reste %d navire(s) à %d cases.\n", tab[i].nb_navires, tab[i].type_navire);
+			return 1;
 		}
-		i++;
 	}
-	return retour;
+	return 0;
 }

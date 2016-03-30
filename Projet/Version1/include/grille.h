@@ -6,8 +6,6 @@
 #include "gestion_fichier.h"
 /*Fonctions implémantées par Grille*/
 
-typedef char ** grille;
-
 //Alloue la dynamiquement la grille
 char** creer_grille (int taille);
 
@@ -38,5 +36,3 @@ void remplit_grille (char ** grille, int taille, FILE * fichier, carac_navires t
 char get_case (char ** grille, int x, int y);
 
 void set_case (char ** grille, int x, int y, char c);
-
-#endif

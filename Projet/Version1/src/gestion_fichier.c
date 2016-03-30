@@ -1,13 +1,11 @@
 /*Gestion_fichier.c*/
 
 #include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
 #include "gestion_fichier.h"
 
 
 //on lit 4 int, qu'on stocke dans coordonnees[]
-//retourne 1 si EOF, 0 sinon
+//retourne -1 si EOF, 0 sinon
 int lecture_fichier (FILE * fichier, int coordonnees[])
 {
 	if(fscanf (fichier, "%d %d %d %d",
@@ -15,21 +13,13 @@ int lecture_fichier (FILE * fichier, int coordonnees[])
 		coordonnees + 1,
 		coordonnees + 2,
 		coordonnees + 3) != EOF)
-	{
-		return 0;
-	}
-	return 1;
 }
 
 //open file 
-FILE* open_file (char * fileName)
+FILE* open_file (char * chemin)
 {
-	char * chemin[100];
 	FILE * fichier = NULL;
-	sprintf(chemin,"../../Ressources/%s", fileName);
-	printf("%s\n", chemin);
-	
-	fichier = fopen (chemin, "r");
+	fichier = fopen (../../Ressources/chemin, "r");
 	if (fichier == NULL)
 	{
 		printf("Gestion_fichier.open_file : Le fichier n'est pas ouvert.\n");
