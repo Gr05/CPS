@@ -7,7 +7,7 @@
 //retourne un pointeur sur grille allouer avec n carré cases
 char** creer_grille (int taille)
 {
-	int i,j;
+	int i;
 	char ** g = malloc(sizeof(char*)*taille);
 	for (i = 0; i < taille; i++){
 		g[i] = malloc(taille);
@@ -179,10 +179,9 @@ int controle (char ** grille, int coordonnees[], int taille, carac_navires tab[]
 	int x_fin = coordonnees[2];
 	int y_fin = coordonnees[3];
 	int type_navire;
-	int emplacement_ok;
 
 
-	if (!(dans_grille(grille, taille, coordonnees)))
+	if (!(dans_grille(grille, coordonnees, taille)))
 	{
 		return 1;
 	}
@@ -195,13 +194,15 @@ int controle (char ** grille, int coordonnees[], int taille, carac_navires tab[]
 	{
 		type_navire = (x_fin - x_deb) + 1;
 	}
+
+	//on regarde si c'est un navire du jeu (nb cases) et si le nombre est bon
 	if (!(navire_appartient(type_navire, tab)))
 		{
 			//on sort
 			return 1;
 		}
 	
-	if (!(emplacement_libre(type_navire, coordonnees, grille, taille)))
+	if (!(emplacement_libre(grille, coordonnees, taille, type_navire)));
 	{
 		return 1;
 	}
@@ -253,12 +254,25 @@ void affichage (char ** grille, int taille)
 {
 	int i,j;
 
+	printf("\n   ");
+	for (i = 0; i < taille; i++)
+	{
+		printf(" %d ", i);
+	}
 	printf("\n");
 	for (i = 0; i < taille; i++)
 	{
+		printf(" %d ", i);
 		for (j= 0; j < taille; j++)
 		{
-			printf(" %c ", grille[j][i]);
+			if (grille[j][i] == 'N')
+			{
+				printf(" N ");
+			}
+			else
+			{
+				printf("   ");
+			}
 		}
 		printf("\n");
 	}
@@ -271,24 +285,28 @@ void remplit_grille (char ** grille, int taille, FILE * fichier, carac_navires t
 	int numero_navire;
 
 	numero_navire = 0;
-	while(lecture_fichier(fichier, coordonnees) != -1)
+	while(lecture_fichier(fichier, coordonnees) != 1)
 	{
-		if (controle(grille, coordonnees, taille, tab))
+		if (!(controle(grille, coordonnees, taille, tab)))
 		{
-			printf("Grille.remplit_grille : Défaut sur le %d navire du fichier.\nexit\n", numero_navire);
+			printf("Grille.remplit_grille : Défaut sur le navire %d du fichier.\nexit\n", numero_navire);
 			exit(1);
 		}
 		insere_navire (grille, coordonnees, taille);
 		numero_navire++;
 	}
+
+	close_file (fichier);
+
 	if(navire_pioche (tab))
 	{
 		printf("Grille.remplit : exit\n");
 		exit(1);
 	}
 	printf("Grille.remplit_grille : Affichage grille =>\n");
-	affichage (g, taille);
+	affichage (grille, taille);
 }
+
 
 //retourne le caractère des coordonnées passées en param
 char get_case (char ** grille, int x, int y)
