@@ -27,30 +27,19 @@ int main (int argc, char * argv[])
 	init_grille(gc, taille);
 
 	fichierIn = open_file(argv[1]);
-	remplit_grille(g, taille, fichierIn, tab_def_jeu);
+	remplit_grille(g, taille, fichierIn, tab_def_jeu);	
 
-
-	/*g[0][0] = 'N';
-	g[0][1] = 'N';
-	g[0][2] = 'N';
-	g[0][3] = 'N';*/
-
-
-	/*l = creer_liste_navires(g, taille);
-
-
-	
+	l = creer_liste_navires(g, taille);
 
 	while(!jeu_fini(l)){
 		printf("Quel point ?\n");
 		scanf("%d %d", &i, &j);
 		joue(g, gc, taille, l, i, j);
 		nb_coup++;
-		//afficher gc
 		affichage(gc, taille);
 	}
 
 	printf("Félicitation le jeu est terminé !!\nIl vous a fallut %d coup pour coulé tout les bateaux\n", nb_coup);
 
-	return 0;*/
+	return 0;
 }
