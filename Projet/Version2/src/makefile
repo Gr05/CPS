@@ -10,7 +10,7 @@ jeu : $(OBJS)
 	$(CC) -o jeu $(OBJS)
 
 move : 
-	mv $(EXECS) ../bin
+	mv $(EXECS) ../bin/jeu
 
 clean : 
 	rm *.o ../bin/$(EXECS)
