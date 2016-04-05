@@ -17,10 +17,11 @@ int main (int argc, char * argv[])
 	if (argc != 3)
 	{
 		printf("main.c : Il n'y a pas le bon nombre d'arguments\n");
+		exit(1);
 	}
 	else
 	{
-		taille = argv[1];
+		taille = atoi(argv[1]);
 		fichierIn = open_file(argv[2]);
 	}
 

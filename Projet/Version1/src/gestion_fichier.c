@@ -24,10 +24,12 @@ int lecture_fichier (FILE * fichier, int coordonnees[])
 //open file 
 FILE* open_file (char * fileName)
 {
-	char * chemin[100];
+	char * chemin = malloc(strlen(fileName) + strlen("../../Ressources/") + 1);
 	FILE * fichier = NULL;
 	sprintf(chemin,"../../Ressources/%s", fileName);
 	printf("%s\n", chemin);
+
+
 	
 	fichier = fopen (chemin, "r");
 	if (fichier == NULL)

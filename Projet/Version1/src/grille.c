@@ -8,7 +8,7 @@
 grille creer_grille (int taille)
 {
 	int i;
-	char ** g = malloc(sizeof(char*)*taille);
+	grille g = malloc(sizeof(char*)*taille);
 	for (i = 0; i < taille; i++){
 		g[i] = malloc(taille);
 	}
@@ -181,7 +181,7 @@ int controle (grille g, int coordonnees[], int taille, carac_navires tab[])
 	int type_navire;
 
 
-	if (!(dans_grille(g, coordonnees, taille)))
+	if (!(dans_grille(coordonnees, taille)))
 	{
 		return 1;
 	}

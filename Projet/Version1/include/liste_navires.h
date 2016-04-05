@@ -1,10 +1,8 @@
 #ifndef LISTE_NAVIRES_H
 #define LISTE_NAVIRES_H
 #include "maillon.h"
-//#include "grille.h"
+#include "grille.h"
 
-
-typedef char ** grille;
 
 typedef struct _liste_navires {
 	maillon * tete;
