@@ -5,7 +5,7 @@
 #include "grille.h"
 
 //retourne un pointeur sur grille allouer avec n carré cases
-char** creer_grille (int taille)
+grille creer_grille (int taille)
 {
 	int i;
 	char ** g = malloc(sizeof(char*)*taille);
@@ -16,7 +16,7 @@ char** creer_grille (int taille)
 }
 
 //initialise la grille avec des B
-void init_grille (char ** grille, int taille)
+void init_grille (grille g, int taille)
 {
 	//on remplit la grille de 'B'
 	int i, j;
@@ -24,13 +24,13 @@ void init_grille (char ** grille, int taille)
 	{
 		for (j = 0; j < taille; j++)
 		{
-			grille[i][j] = 'B';
+			g[i][j] = 'B';
 		}
 	}
 }
 
 //retourne 0 si navire autour ou dessus, 1 sinon
-int emplacement_libre (char ** grille, int coordonnees[], int taille, int type)
+int emplacement_libre (grille g, int coordonnees[], int taille, int type)
 {
 	int x_deb = coordonnees[0]; // ! dans le fichier dentrée (x,y) début est celui le plus
 	int y_deb = coordonnees[1]; //proche de l'origine !
@@ -60,9 +60,9 @@ int emplacement_libre (char ** grille, int coordonnees[], int taille, int type)
 		i = 0;
 		while(i<type)
 		{
-			if (grille[x_deb][y_deb + i] == 'N'               || 
-				grille[x_deb + bord_gauche][y_deb + i] == 'N' ||
-				grille[x_deb + bord_droite][y_deb + i] == 'N')
+			if (g[x_deb][y_deb + i] == 'N'               || 
+				g[x_deb + bord_gauche][y_deb + i] == 'N' ||
+				g[x_deb + bord_droite][y_deb + i] == 'N')
 			{
 				printf("Grille.controle : Il n'y a pas la place.\n");
 				return 0;
@@ -71,7 +71,7 @@ int emplacement_libre (char ** grille, int coordonnees[], int taille, int type)
 		}
 		if (y_deb != 0)
 		{
-			if (grille[x_deb][y_deb - 1] == 'N')
+			if (g[x_deb][y_deb - 1] == 'N')
 			{
 				printf("Grille.controle : Il n'y a pas la place.\n");
 				return 0;
@@ -79,7 +79,7 @@ int emplacement_libre (char ** grille, int coordonnees[], int taille, int type)
 		}
 		if (y_fin != taille -1)
 		{
-			if (grille[x_deb][y_fin + 1] == 'N')
+			if (g[x_deb][y_fin + 1] == 'N')
 			{
 				printf("Grille.controle : Il n'y a pas la place.\n");
 				return 0;
@@ -107,9 +107,9 @@ int emplacement_libre (char ** grille, int coordonnees[], int taille, int type)
 		i = 0;
 		while(i<type)
 		{
-			if (grille[x_deb + i][y_deb] == 'N'             || 
-				grille[x_deb + i][y_deb + bord_haut] == 'N' ||
-				grille[x_deb + i][y_deb + bord_bas] == 'N')
+			if (g[x_deb + i][y_deb] == 'N'             || 
+				g[x_deb + i][y_deb + bord_haut] == 'N' ||
+				g[x_deb + i][y_deb + bord_bas] == 'N')
 			{
 				printf("Grille.controle : Il n'y a pas la place.\n");
 				return 0;
@@ -118,7 +118,7 @@ int emplacement_libre (char ** grille, int coordonnees[], int taille, int type)
 		}
 		if (x_deb != 0)
 		{
-			if (grille[x_deb - 1][y_deb] == 'N')
+			if (g[x_deb - 1][y_deb] == 'N')
 			{
 				printf("Grille.controle : Il n'y a pas la place.\n");
 				return 0;
@@ -126,7 +126,7 @@ int emplacement_libre (char ** grille, int coordonnees[], int taille, int type)
 		}
 		if (x_fin != taille -1)
 		{
-			if (grille[x_deb + 1][y_fin] == 'N')
+			if (g[x_deb + 1][y_fin] == 'N')
 			{
 				printf("Grille.controle : Il n'y a pas la place.\n");
 				return 0;
@@ -137,7 +137,7 @@ int emplacement_libre (char ** grille, int coordonnees[], int taille, int type)
 }
 
 //retourne 0 si pas sur grille 1 sinon
-int dans_grille (char ** grille, int coordonnees[], int taille)
+int dans_grille (int coordonnees[], int taille)
 {
 	int x_deb = coordonnees[0]; // ! dans le fichier dentrée (x,y) début est celui le plus
 	int y_deb = coordonnees[1]; //proche de l'origine !
@@ -172,7 +172,7 @@ int travers (int coordonnees[], int type)
 
 
 //retourne 1 si pb, 0 sinon
-int controle (char ** grille, int coordonnees[], int taille, carac_navires tab[])
+int controle (grille g, int coordonnees[], int taille, carac_navires tab[])
 {
 	int x_deb = coordonnees[0]; // ! dans le fichier dentrée (x,y) début est celui le plus
 	int y_deb = coordonnees[1]; //proche de l'origine !
@@ -181,7 +181,7 @@ int controle (char ** grille, int coordonnees[], int taille, carac_navires tab[]
 	int type_navire;
 
 
-	if (!(dans_grille(grille, coordonnees, taille)))
+	if (!(dans_grille(g, coordonnees, taille)))
 	{
 		return 1;
 	}
@@ -202,7 +202,7 @@ int controle (char ** grille, int coordonnees[], int taille, carac_navires tab[]
 			return 1;
 		}
 	
-	if (!(emplacement_libre(grille, coordonnees, taille, type_navire)));
+	if (!(emplacement_libre(g, coordonnees, taille, type_navire)));
 	{
 		return 1;
 	}
@@ -219,7 +219,7 @@ int controle (char ** grille, int coordonnees[], int taille, carac_navires tab[]
   @param : la grille de jeu
   @param : taille de la grille
   @return : int qui vaut le type du navire*/
-void insere_navire (char ** grille, int coordonnees[], int taille)
+void insere_navire (grille g, int coordonnees[], int taille)
 {
 	int x_deb = coordonnees[0]; // ! dans le fichier dentrée (x,y) début est celui le plus
 	int y_deb = coordonnees[1]; //proche de l'origine !
@@ -234,7 +234,7 @@ void insere_navire (char ** grille, int coordonnees[], int taille)
 		i = 0;
 		while (i < type_navire)
 		{
-			grille[x_deb][y_deb + i] = 'N';
+			g[x_deb][y_deb + i] = 'N';
 			i++;
 		}
 	}
@@ -244,13 +244,13 @@ void insere_navire (char ** grille, int coordonnees[], int taille)
 		i = 0;
 		while (i < type_navire)
 		{
-			grille[x_deb + i][y_deb] = 'N';
+			g[x_deb + i][y_deb] = 'N';
 			i++;
 		}
 	}
 }
 
-void affichage (char ** grille, int taille)
+void affichage (grille g, int taille)
 {
 	int i,j;
 
@@ -265,13 +265,13 @@ void affichage (char ** grille, int taille)
 		printf(" %d ", i);
 		for (j= 0; j < taille; j++)
 		{
-			if (grille[j][i] == 'B')
+			if (g[j][i] == 'B')
 			{
 				printf("   ");
 			}
 			else
 			{
-				printf(" %c ", grille[j][i]);
+				printf(" %c ", g[j][i]);
 			}
 		}
 		printf("\n");
@@ -279,7 +279,7 @@ void affichage (char ** grille, int taille)
 }
 
 //retourne 1 si pb, 0 sinon
-void remplit_grille (char ** grille, int taille, FILE * fichier, carac_navires tab[])
+void remplit_grille (grille g, int taille, FILE * fichier, carac_navires tab[])
 {
 	int coordonnees [4];
 	int numero_navire;
@@ -287,12 +287,12 @@ void remplit_grille (char ** grille, int taille, FILE * fichier, carac_navires t
 	numero_navire = 0;
 	while(lecture_fichier(fichier, coordonnees) != 1)
 	{
-		if (!(controle(grille, coordonnees, taille, tab)))
+		if (!(controle(g, coordonnees, taille, tab)))
 		{
 			printf("Grille.remplit_grille : Défaut sur le navire %d du fichier.\nexit\n", numero_navire);
 			exit(1);
 		}
-		insere_navire (grille, coordonnees, taille);
+		insere_navire (g, coordonnees, taille);
 		numero_navire++;
 	}
 
@@ -304,18 +304,18 @@ void remplit_grille (char ** grille, int taille, FILE * fichier, carac_navires t
 		exit(1);
 	}
 	printf("Grille.remplit_grille : Affichage grille =>\n");
-	affichage (grille, taille);
+	affichage (g, taille);
 }
 
 
 //retourne le caractère des coordonnées passées en param
-char get_case (char ** grille, int x, int y)
+char get_case (grille g, int x, int y)
 {
-	return grille[x][y];
+	return g[x][y];
 }
 
 //change la valeur de la cases des coordonnées avec le char en param
-void set_case (char ** grille, int x, int y, char c)
+void set_case (grille g, int x, int y, char c)
 {
-	grille[x][y] = c;
+	g[x][y] = c;
 }
