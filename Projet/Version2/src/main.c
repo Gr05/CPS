@@ -41,7 +41,14 @@ int main (int argc, char * argv[])
 
 	while(!jeu_fini(l)){
 		printf("Quel point ?\n");
-		scanf("%d %d", &i, &j);
+		if (scanf("%d", &i)!= 1){
+			printf("Entrer un couple d'entier svp !\n");
+			getchar();
+		}
+		if (scanf("%d", &j)!= 1){
+			printf("Entrer un couple d'entier svp !\n");
+			getchar();
+		}
 		joue(g, gc, taille, l, i, j);
 		nb_coup++;
 		affichage(gc, taille);
