@@ -287,7 +287,7 @@ void remplit_grille (grille g, int taille, FILE * fichier, carac_navires tab[])
 	numero_navire = 0;
 	while(lecture_fichier(fichier, coordonnees) != 1)
 	{
-		if (!(controle(g, coordonnees, taille, tab)))
+		if (controle(g, coordonnees, taille, tab))
 		{
 			printf("Grille.remplit_grille : Défaut sur le navire %d du fichier.\nexit\n", numero_navire);
 			exit(1);
