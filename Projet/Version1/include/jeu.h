@@ -1,3 +1,7 @@
+/*Jeu.h*/
+/***Simon CHAMBONNET***/
+/*****Lucas GUERRY*****/
+
 #ifndef JEU_H
 #define JEU_H
 #include "liste_navires.h"

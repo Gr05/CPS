@@ -1,3 +1,8 @@
+/*Jeu.c*/
+/***Simon CHAMBONNET***/
+/*****Lucas GUERRY*****/
+
+
 #include <stdlib.h>
 #include <stdio.h>
 #include "jeu.h"

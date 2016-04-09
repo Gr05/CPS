@@ -1,3 +1,7 @@
+/*Maillon.h*/
+/***Simon CHAMBONNET***/
+/*****Lucas GUERRY*****/
+
 #ifndef MAILLON_H
 #define MAILLON_H
 

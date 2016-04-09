@@ -1,3 +1,7 @@
+/*Liste_navires.h*/
+/***Simon CHAMBONNET***/
+/*****Lucas GUERRY*****/
+
 #ifndef LISTE_NAVIRES_H
 #define LISTE_NAVIRES_H
 #include "maillon.h"

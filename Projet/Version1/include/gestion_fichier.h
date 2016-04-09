@@ -1,4 +1,7 @@
 /*Gestion_fichier.h*/
+/***Simon CHAMBONNET***/
+/*****Lucas GUERRY*****/
+
 #ifndef GESTION_FICHIER_H
 #define GESTION_FICHIER_H
 #include <stdlib.h>

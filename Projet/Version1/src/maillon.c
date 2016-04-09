@@ -1,3 +1,8 @@
+/*Maillon.c*/
+/***Simon CHAMBONNET***/
+/*****Lucas GUERRY*****/
+
+
 #include "maillon.h"
 #include <stdlib.h>
 #include <stdio.h>

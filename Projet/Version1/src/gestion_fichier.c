@@ -1,4 +1,7 @@
 /*Gestion_fichier.c*/
+/***Simon CHAMBONNET***/
+/*****Lucas GUERRY*****/
+
 
 
 #include <string.h>

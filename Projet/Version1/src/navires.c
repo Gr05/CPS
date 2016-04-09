@@ -1,4 +1,7 @@
 /*Navires.c*/
+/***Simon CHAMBONNET***/
+/*****Lucas GUERRY*****/
+
 
 #include <stdio.h>
 #include <stdlib.h>

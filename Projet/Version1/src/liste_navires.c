@@ -1,3 +1,8 @@
+/*Liste_navires.c*/
+/***Simon CHAMBONNET***/
+/*****Lucas GUERRY*****/
+
+
 #include "liste_navires.h"
 #include <stdlib.h>
 #include <stdio.h>
