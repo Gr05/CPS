@@ -57,6 +57,7 @@ void set_coule(maillon * m, int etat){
 
 maillon * nouveau (int ideb, int jdeb, int ifin, int jfin){
 	maillon * m = malloc(sizeof(maillon));
+	m->suiv = NULL;
 	set_coule(m, 0);
 	set_i_deb(m, ideb);
 	set_i_fin(m, ifin);
