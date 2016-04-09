@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+//(A surtout servi pour degbugger) Affiche la liste de navire l.
 void afficher_liste(liste_navires * l){
 	if(l == NULL){
 		printf("La liste n'existe pas\n");
@@ -22,6 +23,7 @@ liste_navires * liste_vide (){
 	return l;
 }
 
+//Fonction qui retourne 1 si la liste est vide, 0 sinon.
 int est_vide(liste_navires * l){
 	return (l->tete == NULL);
 }

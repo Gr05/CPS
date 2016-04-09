@@ -9,11 +9,13 @@ typedef struct _liste_navires {
 	maillon * queue;
 } liste_navires;
 
+//Créer une liste de navire vide.
 liste_navires * liste_vide ();
 
-//procédure qui insert m en fin de l
+//Procédure qui insert m en fin de l
 void insertion (liste_navires * l, maillon * m);
 
+//Fonction qui renvoie la liste de navires compris dans la grille g (Les navires verticaux sont detecté en premier et ensuite les navires horizontaux), n est la taille de la grille g.
 liste_navires * creer_liste_navires(grille g, int n);
 
 #endif

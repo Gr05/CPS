@@ -9,8 +9,10 @@ typedef struct _maillon {
 	struct _maillon * suiv;
 } maillon;
 
+//Procédure qui insere v du bit petit au bit grand.
 void set_field(navire * x, int petit, int grand, int v);
 
+//Fonction qui renvoie la valeur de l'entier codé entre le bit petit et le bit grand.
 int get_field(navire * x, int petit, int grand);
 
 int prem_i(maillon * m);

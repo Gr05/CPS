@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include "jeu.h"
 
+//Procedure qui met a 'C' toute les cases d'un navires et a 1 l'attribut coule du maillon m.
 void coule_navire(maillon * m, grille gc){
 	set_coule(m, 1);
 	int i = prem_i(m);
@@ -18,6 +19,7 @@ void coule_navire(maillon * m, grille gc){
 		}
 	}
 }
+
 int navire_coule(maillon * m, int ic, int jc, grille gc){
 	if (!appartient(m, ic, jc)){
 		return 0;
@@ -88,7 +90,6 @@ int jeu_fini(liste_navires * l){
 		} else {
 			navire_courant = navire_courant ->suiv;
 		}
-
 	}
 	return 1;
 }

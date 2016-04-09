@@ -7,7 +7,7 @@ void set_field(navire * x, int petit, int grand, int v){
 	masque = ~masque; // 000000001111
 	masque <<= petit; // 000011110000
 	masque = ~masque; // 111100001111
-	(*x) &= masque;   // *x = xxxxx0000xxxx
+	(*x) &= masque;   // *x = xxxx0000xxxx
 	(*x) |= v<<petit; 
 }
 
