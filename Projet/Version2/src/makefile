@@ -1,5 +1,8 @@
+#Simon CHAMBONNET
+#Lucas GUERRY
+
 EXECS = jeu
-SRCS = main.c liste_navires.c maillon.c jeu.c grille.c navires.c gestion_fichier.c
+SRCS = main.c liste_navires.c maillon.c jeu.c grille.c gestion_fichier.c navires.c
 OBJS = $(SRCS:.c=.o)
 CFLAGS = -Wall -I ../include
 CC = gcc
@@ -10,7 +13,7 @@ jeu : $(OBJS)
 	$(CC) -o jeu $(OBJS)
 
 move : 
-	mv $(EXECS) ../bin
+	mv $(EXECS) ../bin/jeu
 
 clean : 
 	rm *.o ../bin/$(EXECS)

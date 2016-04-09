@@ -1,4 +1,7 @@
 /*Grille.h*/
+/***Simon CHAMBONNET***/
+/*****Lucas GUERRY*****/
+
 #ifndef GRILLE_H
 #define GRILLE_H
 

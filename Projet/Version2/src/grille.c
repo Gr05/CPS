@@ -1,4 +1,6 @@
 /*Grille.c*/
+/***Simon CHAMBONNET***/
+/*****Lucas GUERRY*****/
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -136,7 +138,7 @@ int emplacement_libre (grille g, int coordonnees[], int taille, int type)
 	return 1; //Le navire n'a aucun contact
 }
 
-//retourne 0 si pas sur grille 1 sinon
+//retourne 1 si ok 0 sinon
 int dans_grille (int coordonnees[], int taille)
 {
 	int x_deb = coordonnees[0]; // ! dans le fichier dentrée (x,y) début est celui le plus
@@ -197,12 +199,12 @@ int controle (grille g, int coordonnees[], int taille, carac_navires tab[])
 
 	//on regarde si c'est un navire du jeu (nb cases) et si le nombre est bon
 	if (!(navire_appartient(type_navire, tab)))
-		{
-			//on sort
-			return 1;
-		}
-	
-	if (!(emplacement_libre(g, coordonnees, taille, type_navire)));
+	{
+		//on sort
+		return 1;
+	}
+
+	if (!(emplacement_libre(g, coordonnees, taille, type_navire)))
 	{
 		return 1;
 	}

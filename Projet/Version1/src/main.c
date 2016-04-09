@@ -50,10 +50,12 @@ int main (int argc, char * argv[])
 			printf("Entrer un couple d'entier svp !\n");
 			getchar();
 		}
+		printf("la première coordonées est entrée, entrez la deuxième : \n");
 		if (scanf("%d", &j)!= 1){
 			printf("Entrer un couple d'entier svp !\n");
 			getchar();
 		}
+		printf("Les deux coordonées on bien été récupérées !\n");
 		joue(g, gc, taille, l, i, j);
 		nb_coup++;
 		affichage(gc, taille);

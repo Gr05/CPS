@@ -1,4 +1,7 @@
 /*Navires.h*/
+/***Simon CHAMBONNET***/
+/*****Lucas GUERRY*****/
+
 #ifndef NAVIRES_H
 #define NAVIRES_H
 
